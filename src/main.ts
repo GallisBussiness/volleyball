@@ -5,7 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { json } from 'express';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
-import { HttpExceptionFilter } from './http-exection-filter';
+// import { HttpExceptionFilter } from './http-exection-filter';
 
 const logger = new Logger('Main');
 async function bootstrap() {
@@ -27,7 +27,7 @@ async function bootstrap() {
     }),
   );
 
-  app.useGlobalFilters(new HttpExceptionFilter());
+  // app.useGlobalFilters(new HttpExceptionFilter());
   
   const config = app.get(ConfigService);
 
