@@ -21,12 +21,12 @@ export class TournoiController {
    return this.tournoiService.update(id, {ferme: activeDto.isActive});
   }
 
+
   @Get()
   findAll() {
     return this.tournoiService.findAll();
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.tournoiService.findOne(id);

@@ -5,6 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { json } from 'express';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
+import { HttpExceptionFilter } from './http-exection-filter';
 
 const logger = new Logger('Main');
 async function bootstrap() {
@@ -25,6 +26,8 @@ async function bootstrap() {
       disableErrorMessages: process.env.NODE_ENV == 'production',
     }),
   );
+
+  app.useGlobalFilters(new HttpExceptionFilter());
   
   const config = app.get(ConfigService);
 

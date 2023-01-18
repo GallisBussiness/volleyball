@@ -72,7 +72,10 @@ export class EquipeService {
   async deleteOthersEquipe(idT: string,idC: string): Promise<Equipe> {
     try {
       const eq =  await this.EquipeModel.findOne({idCapitaine: idC.toString(),idTournoi:idT.toString(),isActive: false});
-      return await this.remove(eq._id);
+      if(eq) {
+        return await this.remove(eq._id);
+      }
+      return eq;
     } catch (error) {
       throw new HttpException(error.message, 500);
     }

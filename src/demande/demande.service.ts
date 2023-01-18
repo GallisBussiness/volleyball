@@ -71,7 +71,10 @@ export class DemandeService {
   async deleteOthersDemande(idT: string,idE: string): Promise<Demande> {
     try {
       const de =  await this.DemandeModel.findOne({idTournoi: idT,idEquipe:idE});
-      return await this.remove(de._id);
+      if(de) {
+        return await this.remove(de._id);
+      }
+      return de;
     } catch (error) {
       throw new HttpException(error.message, 500);
     }

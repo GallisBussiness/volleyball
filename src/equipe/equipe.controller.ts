@@ -37,7 +37,6 @@ export class EquipeController {
     return this.equipeService.findOne(id);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Get('/bytournoi/:id')
   findEquipeByTournoi(@Param('id') id: string) {
     return this.equipeService.findByTournoi(id);

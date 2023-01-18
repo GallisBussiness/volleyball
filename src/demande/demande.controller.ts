@@ -34,7 +34,9 @@ export class DemandeController {
     await this.equipeService.update(dem.idEquipe._id,activeDto);
     await this.demandeService.remove(dem._id);
     const eq = await this.equipeService.deleteOthersEquipe(dem.idTournoi._id,dem.idCoequipier._id);
-    await this.demandeService.deleteOthersDemande(dem.idTournoi._id, eq._id);
+    if(eq) {
+       await this.demandeService.deleteOthersDemande(dem.idTournoi._id, eq._id);
+    }
     return dem;
   }
 
