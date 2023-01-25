@@ -32,7 +32,7 @@ export class TournoiController {
     return this.tournoiService.findOne(id);
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  
   @Get('user/:id')
   findTournoiByJoueur(@Param('id') id: string) {
     return this.tournoiService.findByJoueur(id);

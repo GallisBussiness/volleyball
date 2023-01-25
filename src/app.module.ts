@@ -50,8 +50,8 @@ export class AppModule implements NestModule{
       .exclude({ path: 'user/loginadmin', method: RequestMethod.POST },
       { path: 'user/loginjoueur', method: RequestMethod.POST },
       { path: 'user/joueurs/create', method: RequestMethod.POST },
-      { path: 'tournoi', method: RequestMethod.GET },
-      { path: 'equipe', method: RequestMethod.GET }
+      { path: 'tournoi(.*)', method: RequestMethod.GET },
+      { path: 'equipe(.*)', method: RequestMethod.GET }
       )
       .forRoutes('*');
   }
